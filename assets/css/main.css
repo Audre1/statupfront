@@ -20,11 +20,11 @@
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #151515; /* Default color used for the majority of the text content across the entire website */
+  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #2c4964; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: rgb(13, 108, 230); /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #1977cc; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #0d6ce6; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -41,12 +41,12 @@
 
 .light-background {
   --background-color: #f1f7fc;
-  --surface-color: #0d6ce6;
+  --surface-color: #ffffff;
 }
 
 .dark-background {
   --background-color: #060606;
-  --default-color: rgba(255, 255, 255, 0.29);
+  --default-color: #ffffff;
   --heading-color: #ffffff;
   --surface-color: #252525;
   --contrast-color: #ffffff;
@@ -84,7 +84,7 @@ h4,
 h5,
 h6 {
   color: var(--heading-color);
-  font-family: var(--heading-font), serif;
+  font-family: var(--heading-font);
 }
 
 /* Pulsating Play Button
@@ -108,7 +108,7 @@ h6 {
   animation: pulsate-play-btn 2s;
   animation-direction: forwards;
   animation-iteration-count: infinite;
-  animation-timing-function:  steps(1);
+  animation-timing-function: steps;
   opacity: 1;
   border-radius: 50%;
   border: 5px solid color-mix(in srgb, var(--accent-color), transparent 30%);
@@ -286,8 +286,8 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 50px;
-  margin-right: 50px;
+  max-height: 36px;
+  margin-right: 8px;
 }
 
 .header .logo h1 {
@@ -296,12 +296,11 @@ h6 {
   font-weight: 700;
   color: var(--heading-color);
 }
-/* bouton rdv
-------------------------------*/
+
 .header .cta-btn,
 .header .cta-btn:focus {
-  color: black;
-  background: beige;
+  color: var(--contrast-color);
+  background: var(--accent-color);
   font-size: 14px;
   padding: 8px 25px;
   margin: 0 0 0 30px;
@@ -795,7 +794,7 @@ h6 {
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
   [data-aos-delay] {
-    transition-delay: 0.3s!important;
+    transition-delay: 0 !important;
   }
 }
 
@@ -915,8 +914,8 @@ section,
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  min-height: calc(100vh - 112px);
-  padding: 100px 0;
+  min-height: calc(150vh - 200px);
+  padding: 80px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -937,111 +936,73 @@ section,
 .hero .container {
   z-index: 3;
 }
-
-.hero .welcome {
-  text-align: center;
-  position: relative;
-  padding: 20px;
-  overflow: hidden;
-}
-
-.hero .welcome h2, .hero .welcome h1 {
-  opacity: 0; /* Initialement invisible */
-  transform: translateY(50px); /* Départ légèrement en bas */
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero .welcome h2 {
-  color: blue;
+  margin: 0;
   font-size: 48px;
   font-weight: 700;
-}
-.hero .welcome h1 {
-  color: #0d6ce6; /* Accentuation pour "AU GRAND CENTRE" */
-  font-size: 3rem;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  color: white;
+  position: absolute;
+  left: 50px;
 }
 
-/* AOS animation */
-[data-aos="fade-up"].aos-animate {
-  opacity: 1;
-  transform: translateY(0); /* Remontée de l'élément */
+.hero .welcome h2 .word {
+  display: inline-block; /* Permet d'animer chaque mot séparément */
+  opacity: 0; /* Masquer initialement */
+  animation: fadeIn 1s ease-out forwards;
 }
 
-
-.hero .welcome p {
-  font-size: 24px;
-  margin: 0;
+/* Délai pour chaque mot */
+.hero .welcome h2 .word-1 {
+  animation-delay: 0.5s;
 }
+
+.hero .welcome h2 .word-2 {
+  animation-delay: 1s;
+}
+
+.hero .welcome h2 .word-3 {
+  animation-delay: 1.5s;
+}
+
+.hero .welcome h2 .word-4 {
+  animation-delay: 2s;
+}
+
+.hero .welcome h2 .word-5 {
+  animation-delay: 2.5s;
+}
+
+.hero .welcome h2 .word-6 {
+  animation-delay: 3s;
+}
+
 
 .hero .content {
   margin-top: 40px;
-  color: var(--contrast-color);
-
-}
-
-.why-box {
-  background: rgba(255, 255, 255, 0.07);
-  padding: 30px;
-  border-radius: 4px;
 }
 
 
-
-.hero .content .why-box h3 {
-  color: var(--contrast-color);
-  font-weight: 700;
-  font-size: 34px;
-  margin-bottom: 30px;
-}
-
-
-
-.hero .content .why-box .more-btn {
-  color: var(--contrast-color);
-  background: color-mix(in srgb, var(--contrast-color), transparent 80%);
-  display: inline-block;
-  padding: 6px 30px 8px 30px;
-  border-radius: 50px;
-  transition: all ease-in-out 0.4s;
-}
-
-.hero .content .why-box .more-btn i {
-  font-size: 14px;
-}
-.hero .content .why-box .more-btn:hover {
-  background: var(--surface-color);
-  color: var(--accent-color);
-}
-
-.hero .content .icon-box {
-  text-align: center;
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--surface-color), transparent 20%);
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  padding: 40px 30px;
-  width: 100%;
-}
-
-.hero .content .icon-box i {
-  font-size: 40px;
-  color: var(--accent-color);
-}
-
-.hero .content .icon-box h4 {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 10px 0 20px 0;
-}
-
-.hero .content .icon-box p {
-  font-size: 15px;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-}
 
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+
+
+.about {
+  background-color: rgba(161, 161, 161, 0.1);
+
+}
 .about .content h3 {
   font-size: 2rem;
   font-weight: 700;
