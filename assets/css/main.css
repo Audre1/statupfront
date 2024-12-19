@@ -87,6 +87,9 @@ h6 {
   font-family: var(--heading-font);
 }
 
+
+
+
 /* Pulsating Play Button
 ------------------------------*/
 .pulsating-play-btn {
@@ -291,10 +294,10 @@ h6 {
 }
 
 .header .logo h1 {
-  font-size: 30px;
+  font-size: 20px;
   margin: 0;
   font-weight: 700;
-  color: var(--heading-color);
+  color: #0a53be;
 }
 
 .header .cta-btn,
